@@ -1,7 +1,8 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 \usepackage[a3paper]{geometry}
 \usepackage{url}
 \usepackage{multicol}
+%\usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{esint}
 \usepackage{bigints}
@@ -12,11 +13,13 @@
 \usetikzlibrary{calc}
 \usetikzlibrary{decorations.pathmorphing}
 \usepackage{amsmath,amssymb}
-
+\usepackage{unicode-math} % Para usar fuentes otf
+\setmathfont{Cambria Math} % Usamos la fuente
+%\setmainfont{Latin Modern Math}
 
 \usepackage{colortbl}
 \usepackage{xcolor}
-\usepackage{mathtools}
+
 \usepackage{amsmath,amssymb}
 \usepackage{enumitem}
 \usepackage{xhfill}
@@ -32,7 +35,7 @@
 
 \title{Relatividad General y Gravitación}
 \usepackage[spanish]{babel}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 %cambios de unidades (pt, mm, cm,ex,em,bp,dd,pc,sp) https://tex.stackexchange.com/questions/8260/what-are-the-various-units-ex-em-in-pt-bp-dd-pc-expressed-in-mm
 \advance\topmargin-1.9in
 \advance\textheight5in
@@ -49,6 +52,7 @@
     ($(current page.center)+(0.5\linewidth,0)$)
     node [midway, fill=white] {#2};
 }% tomado de https://tex.stackexchange.com/questions/179425/a-new-command-of-the-form-tex
+
 \begin{document}
 
 
@@ -72,12 +76,12 @@ $\vec{\nabla}\cdot(\vec{u}\times\vec{v})=\vec{v}\cdot(\vec{\nabla}\times\vec{u})
 $\vec{\nabla}(\vec{u}\cdot\vec{v}) = (\vec{u}\cdot\vec{\nabla})\vec{v}+(\vec{v}\cdot\vec{\nabla})\vec{u}+\vec{u}\times(\vec{\nabla}\times\vec{v})+\vec{v}\times(\vec{\nabla}\times\vec{u})$\\
 $\vec{\nabla}\times(\vec{u}\times\vec{v})=\vec{u}(\vec{\nabla}\cdot\vec{v})-\vec{v}(\vec{\nabla}\cdot\vec{u})+(\vec{v}\cdot\vec{\nabla})\vec{u}-(\vec{u}\cdot\vec{\nabla})\vec{v}$\\
 $\vec{\nabla}\cdot (f\vec{u}) = \vec{\nabla}f\cdot\vec{u}+f\vec{\nabla}\cdot\vec{u}$\\
-$\vec{\nabla}\times (f\vec{u}) = \vec{\nabla}f\times\vec{u}+f\vec{\nabla}\times\vec{u}$\\
+$\vec{\nabla}\times (f\vec{u}) = \vec{\nabla}f\times\vec{u}+f\vec{\nabla}\times\vec{u}$
 
 $\vec{\nabla}\times(\vec{\nabla}\times\vec{u})=\vec{\nabla}(\vec{\nabla}\cdot\vec{u})-\vec{\nabla}^2\vec{u}$\\
 $\vec{\nabla}\cdot(\vec{\nabla}\times \vec{u})=0 \ \ \ \ $
 $\vec{\nabla}\times(\vec{\nabla}f) =0$\\
-$\vec{\nabla}\cdot(f\vec{\nabla}g)=\vec{\nabla}f\cdot\vec{\nabla}g+f\vec{\nabla}^2g$\\
+$\vec{\nabla}\cdot(f\vec{\nabla}g)=\vec{\nabla}f\cdot\vec{\nabla}g+f\vec{\nabla}^2g$
 
 $\vec{\nabla}\times\vec{r} = 0 \ \ \ \ \   $
 $\vec{\nabla}\cdot\vec{r} = 3$ \\
@@ -164,9 +168,9 @@ $u = \frac{1}{2}(\epsilon_0 \vec{E}^2+\frac{\vec{B}^2}{\mu_0})=\frac{1}{2}\varep
 $\partial_t u +\vec{\nabla}\cdot\vec{S} = -\vec{E}\cdot\vec{j}$\\
 
 Tensor de estrés de Maxwell:\\
-{\large$\mathbf{T} = \dfrac{\epsilon_0 \vec{E}^2+\frac{1}{\mu_0}\vec{B}^2}{2}\mathbf{\mathbb{I}}-(\epsilon_0 \vec{E}\circ \vec{E}+\frac{1}{\mu_0}\vec{B}\circ\vec{B})$}\\
+{\large$\mathbf{T} = \dfrac{\epsilon_0 \vec{E}^2+\frac{1}{\mu_0}\vec{B}^2}{2}\mathbf{\mathbb{1}}-(\epsilon_0 \vec{E}\circ \vec{E}+\frac{1}{\mu_0}\vec{B}\circ\vec{B})$}\\
 
-{\large$  \mathrm{T}_{ij}^{M}=\mathrm{\varepsilon}_{0}c^2\left[\frac{E_iE_j}{c^2}+B_iB_j-\frac{1}{2}\delta_{ij}\left( \frac{E^2}{c^2}+B^2 \right) \right]$}
+{\large$  \mathrm{T}_{ij}^{M}=\varepsilon_{0}c^2\left[\frac{E_iE_j}{c^2}+B_iB_j-\frac{1}{2}\delta_{ij}\left( \frac{E^2}{c^2}+B^2 \right) \right]$}
 
 {\large$(T^{ij} = T^{ji}) \qquad Tr[\mathbf{T}] = u$}\\
 
@@ -285,13 +289,13 @@ $    \begin{pmatrix}
          \end{pmatrix}
 $\\
 
-$ \vec{x}' = \mathbf{\Lambda}\vec{x} \;\;\;\;\Longrightarrow\;\;\;\; x'^i = \Lambda_{j}^{i} x^{j}$
+$ \vec{x}' = \Lambda\vec{x} \;\;\;\;\Longrightarrow\;\;\;\; x'^i = \Lambda_{j}^{i} x^{j}$
 
 $
-    \mathbf{\Lambda} = \begin{pmatrix}
+    \Lambda = \begin{pmatrix}
          \begin{array}{c|c}
              \gamma & -\gamma\vec{\beta}\\[0.5em] \hline\\[-0.5em]
-             -\gamma\vec{\beta} & \mathbf{\mathbb{I}}+\dfrac{\gamma-1}{\beta^2}\vec{\beta}\circ\vec{\beta}
+             -\gamma\vec{\beta} & \mathbf{\mathbb{1}}+\dfrac{\gamma-1}{\beta^2}\vec{\beta}\circ\vec{\beta}
          \end{array}
          \end{pmatrix}=$\\
          
@@ -418,7 +422,7 @@ $x^i = \begin{pmatrix}
     -\vec{x}
 \end{pmatrix} \\ F_{\alpha\beta} = g_{\alpha\mu}g_{\nu\beta}F^{\mu\nu}$\\
 $\delta_{j}^{i}\delta_{i}^{k}=\delta_{j}^{k}\qquad \delta_{i}^{i}=\delta_{j}^{i}\delta_{j}^{i}=3$\\
-$\delta_{j}^{i} = g^{ik}g_{kj}= \mathbb{I}_{ij}\neq\delta_{ij}=g_{ik}\delta_{j}^{k}$\\
+$\delta_{j}^{i} = g^{ik}g_{kj}= \mathbb{1}_{ij}\neq\delta_{ij}=g_{ik}\delta_{j}^{k}$\\
 $\delta_{ij} = g_{ij} = g^{ij} = \delta^{ij} \qquad \frac{\partial x^\alpha}{\partial x^\beta}=\delta^\alpha_\beta$\\
 $\varepsilon_{ijk} = \begin{cases}
 \begin{aligned}
@@ -638,8 +642,8 @@ Cambio radio:$\
     \dfrac{2}{3}\dfrac{q^2/(4 \pi \varepsilon_0)}{mc^2} \left(\dfrac{qcB}{mc^2}\right)^3 c \Delta t=\Delta(1/R)
 $\\
 $
-    \dot{\vec{\beta}} = \frac{1}{\gamma m c} \left[  \vec{F} - (\vec{F}.\vec{\beta})\vec{\beta}  \right] \qquad \frac{d\gamma}{dt'}= \gamma^3 (\vec{\beta}.\dot{\vec{\beta}})\\
-    \vec{F} =\frac{d\vec{p}}{dt'}= \gamma m c \left[  \dot{\vec{\beta}} - \gamma^2 (\vec{\beta}.\dot{\vec{\beta}})\vec{\beta}  \right]
+    \dot{\vec{\beta}} = \frac{1}{\gamma m c} \left[  \vec{F} - (\vec{F}\cdot \vec{\beta})\vec{\beta}  \right] \qquad \frac{d\gamma}{dt'}= \gamma^3 (\vec{\beta}\cdot \dot{\vec{\beta}})\\
+    \vec{F} =\frac{d\vec{p}}{dt'}= \gamma m c \left[  \dot{\vec{\beta}} - \gamma^2 (\vec{\beta}\cdot \dot{\vec{\beta}})\vec{\beta}  \right]
 $\\
 Reacción de radiación (despreciable si $T\ll \tau$, ó $E^{\text{rad}} \ll E^c_0$):
 
@@ -717,7 +721,9 @@ $\frac{dW}{dt}=q\Vec{E}\cdot\Vec{v} \qquad
 $E=\frac{\sigma0}{\varepsilon}$  condensador $B=\frac{\mu_0 I r}{2\pi R} \quad \text{hilo r$<$R}\\
 B=\frac{\mu_0 I}{2\pi r} \quad \quad  E=\frac{\lambda }{2 \pi \varepsilon_0 R} \quad \text{hilo r$>$R}\\
  B=\mu_0 In$ ({\small solenoide});
- $B=\dfrac{\mu_0 I}{2 R}$ ({\small centro de espira circular}); $B=\dfrac{\mu_0 I R^2}{2(z^2+R^2)^{3/2}}$ ({\small eje de espira})
+ $B=\dfrac{\mu_0 I}{2 R}$ ({\small centro de espira circular}); $B=\dfrac{\mu_0 I R^2}{2(z^2+R^2)^{3/2}}$ ({\small eje de espira}) 
+
+ $\mathcal{E}$
     \end{minipage}
 };
 %------------ potencial titulo  ---------------------
