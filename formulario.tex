@@ -1,0 +1,730 @@
+\documentclass[12pt]{article}
+\usepackage[a3paper]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{bigints}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xhfill}
+\makeatletter
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\pagenumbering{gobble}
+
+\definecolor{periwinkle}{rgb}{0.8, 0.8, 1.0}
+
+\title{Relatividad General y Gravitación}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+%cambios de unidades (pt, mm, cm,ex,em,bp,dd,pc,sp) https://tex.stackexchange.com/questions/8260/what-are-the-various-units-ex-em-in-pt-bp-dd-pc-expressed-in-mm
+\advance\topmargin-1.9in
+\advance\textheight5in
+\advance\textwidth3in
+\advance\oddsidemargin-1.7in
+\advance\evensidemargin1.7in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\newcommand{\nc}[2][]{%
+\tikz \draw [draw=black, ultra thick, #1]
+    ($(current page.center)-(0.5\linewidth,0)$) --
+    ($(current page.center)+(0.5\linewidth,0)$)
+    node [midway, fill=white] {#2};
+}% tomado de https://tex.stackexchange.com/questions/179425/a-new-command-of-the-form-tex
+\begin{document}
+
+
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
+%--------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.32\textwidth}
+$\vec{u}\cdot(\vec{u}\times\vec{v})=0$ $\ \ \ $
+$\vec{u}\times(\vec{v}\times\vec{w}) = (\vec{u}\cdot\vec{w})\vec{v}-(\vec{u}\cdot\vec{v})\vec{w}$\\
+$(\vec{u}\cdot\vec{v})\times(\vec{w}\cdot\vec{z})=(\vec{u}\cdot\vec{w})(\vec{v}\cdot\vec{z})-(\vec{u}\cdot\vec{z})(\vec{v}\cdot\vec{w})$\\
+$\vec{u}\cdot(\vec{v}\times\vec{w}) = \vec{v}\cdot(\vec{w}\times\vec{u})=\vec{w}\cdot(\vec{u}\times\vec{v})$\\
+$(\vec{u}\times\vec{v})^{2}=(uv)^{2}-(\vec{u}\cdot\vec{v})^{2}$
+
+$\vec{\nabla}\cdot(\vec{u}\times\vec{v})=\vec{v}\cdot(\vec{\nabla}\times\vec{u})-\vec{u}\cdot(\vec{\nabla}\times\vec{v})$\\
+$\vec{\nabla}(\vec{u}\cdot\vec{v}) = (\vec{u}\cdot\vec{\nabla})\vec{v}+(\vec{v}\cdot\vec{\nabla})\vec{u}+\vec{u}\times(\vec{\nabla}\times\vec{v})+\vec{v}\times(\vec{\nabla}\times\vec{u})$\\
+$\vec{\nabla}\times(\vec{u}\times\vec{v})=\vec{u}(\vec{\nabla}\cdot\vec{v})-\vec{v}(\vec{\nabla}\cdot\vec{u})+(\vec{v}\cdot\vec{\nabla})\vec{u}-(\vec{u}\cdot\vec{\nabla})\vec{v}$\\
+$\vec{\nabla}\cdot (f\vec{u}) = \vec{\nabla}f\cdot\vec{u}+f\vec{\nabla}\cdot\vec{u}$\\
+$\vec{\nabla}\times (f\vec{u}) = \vec{\nabla}f\times\vec{u}+f\vec{\nabla}\times\vec{u}$\\
+
+$\vec{\nabla}\times(\vec{\nabla}\times\vec{u})=\vec{\nabla}(\vec{\nabla}\cdot\vec{u})-\vec{\nabla}^2\vec{u}$\\
+$\vec{\nabla}\cdot(\vec{\nabla}\times \vec{u})=0 \ \ \ \ $
+$\vec{\nabla}\times(\vec{\nabla}f) =0$\\
+$\vec{\nabla}\cdot(f\vec{\nabla}g)=\vec{\nabla}f\cdot\vec{\nabla}g+f\vec{\nabla}^2g$\\
+
+$\vec{\nabla}\times\vec{r} = 0 \ \ \ \ \   $
+$\vec{\nabla}\cdot\vec{r} = 3$ \\
+$\vec{\nabla}\left(1/r^k\right)=-\dfrac{k}{r^{k+2}}\vec{r}=-\dfrac{k}{r^{k+1}}\hat{r}\;\;,\;\;\; \forall k\in\mathbb{Z}$\\
+$\vec{\nabla}\cdot(\vec{r}/r^3) = -\vec{\nabla}^2(1/r) = 4\pi\delta^3(\vec{r})$
+
+$\begin{cases}
+    x= r\sin\theta\cos\varphi\\
+    y= r\sin\theta\sin\varphi\\
+    z= r\cos\theta
+\end{cases}\!\!\!\!\!\! \begin{cases}
+    r= \sqrt{x^2+y^2+z^2}\\
+    \theta= \arccos(z/r)\\
+    \varphi= \text{sgn} Si\arccos(x/\sqrt{x^2+y^2})
+\end{cases}$
+
+$\begin{cases}
+      \hat{e}_x = \sin\theta\cos\varphi\,\hat{e}_{r}+\cos\theta\cos\varphi\,\hat{e}_{\theta}-\sin\varphi\,\hat{e}_{\varphi}\\
+      \hat{e}_y = \sin\theta\sin\varphi\,\hat{e}_{r}+\cos\theta\sin\varphi\,\hat{e}_{\theta}+\cos\varphi\,\hat{e}_{\varphi}\\
+      \hat{e}_z = \cos\theta\,\hat{e}_{r}-\sin\theta\,\hat{e}_{\theta}
+    \end{cases} \\
+    \begin{cases}
+      \hat{e}_r = \sin\theta\cos\varphi\,\hat{e}_{x}+\sin\theta\sin\varphi\,\hat{e}_{y}+\cos\theta\,\hat{e}_{z}\\
+      \hat{e}_{\theta} = \cos\theta\cos\varphi\,\hat{e}_{x}+\cos\theta\sin\varphi\,\hat{e}_{y}-\sin\theta\,\hat{e}_{z}\\
+      \hat{e}_{\varphi} = -\sin\varphi\,\hat{e}_{x}+\cos\varphi\,\hat{e}_{y}
+\end{cases}$
+
+$\vec{\nabla} f = \partial_r (f) \hat{r}+\partial_{\theta}(f)\hat{\theta}+\frac{1}{r\sin\theta}\partial_{\varphi} (f) \hat{\varphi}$\\
+$\vec{\nabla}\cdot\vec{u} = \frac{1}{r^2}\partial_r (r^2 u_r)+\frac{1}{r\sin\theta}\partial_{\theta}(\sin\theta u_{\theta})+\frac{1}{r\sin\theta}\partial_{\varphi} u_{\varphi}$\\
+$\vec{\nabla}^2 f=\frac{1}{r^2}\partial_r (r^2\partial_r f)+\frac{1}{r^2\sin\theta}\partial_{\theta}(\sin\theta\partial_{\theta}f)+\frac{1}{r^2\sin^2\theta}\partial_{\varphi}^2 f$
+
+$\vec{\nabla}^2 f=\frac{1}{r}\partial_r (r\partial_r f)+\frac{1}{r^2}\partial_{\varphi}^2 f$
+\\
+$\int \cos^3 x \,dx = \sin x-\frac{1}{3}\sin^3 x$\\
+$\int \sin^2 x \,dx=\frac{x}{2}-\frac{1}{4}\sin(2x)$\\
+$\int_{0}^{\infty} x^ne^{-ax}\, dx=n!/a^{n+1}$\\
+$\int_{-1}^{1}\dfrac{1-x^2}{(1+ax)^5}\,dx = \frac{4}{3}\frac{1}{(1-a^2)^3}$\\
+$\int \dfrac{1}{1-(x/a)^2}\,dx = a\cdot arctanh(x/a) + C$\\
+$\int \dfrac{1}{\sqrt{1-(x/a)^2}}\,dx = a\cdot arcsin(x/a) + C \ \ \ \ (a>0)$\\
+$sin(\alpha\pm\beta)=sin(\alpha)\cdot cos(\beta)\pm cos(\alpha)\cdot sin(\beta)$\\
+$cos(\alpha\pm\beta)=cos(\alpha)\cdot cos\beta\mp sin(\alpha)\cdot sin(\beta)$\\
+$tan(\alpha\pm \beta)=\frac{tan(\alpha)\pm tan(\beta)}{1\mp tan(\alpha)\cdot tan(\beta))}$
+
+    \end{minipage}
+};
+
+%---------------------------------
+\node[fancytitle, right=10pt] at (box.north west) {Identidades matemáticas};
+\end{tikzpicture}
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+
+$\mu_0 = 4\pi \cdot 10^{-7} \;\textbf{H/m}$\\
+$\epsilon_0 = 1/\mu_0 c^2 = 8.854 \cdot 10^{-12} \;\textbf{F/m}$\\
+$\eta_0=\sqrt{\frac{\mu_0}{\epsilon_0}}=\mu_0c=377 \Omega\ \ \ \ $ $m_ec^2=511$keV \\
+$\vec{H} = \frac{\vec{B}}{\mu_0}-\vec{M}\ \ \ \ \ $
+$\vec{D} = \epsilon_0 \vec{E}+\vec{P}$\\
+$\vec{\beta} = \vec{v}/c\simeq1-1/(2\gamma^2)\ \ \ \ \ $
+$\gamma = 1/\sqrt{1-\beta^2}$
+   
+    \end{minipage}
+};
+%---------------------------------
+\node[fancytitle, right=10pt] at (box.north west) {Constantes};
+\end{tikzpicture}
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+
+    $\vec{\nabla} \cdot \vec{E} = \frac{\rho}{\epsilon_0} \qquad \qquad
+    \vec{\nabla} \times \vec{B} -\partial_{t} \vec{E}/c^2 = \mu_{0} \vec{j}$\\
+    $\vec{\nabla} \times \vec{E} +\partial_{t} \vec{B} = 0\qquad \qquad
+     \vec{\nabla} \cdot \vec{B} = 0$\\
+$\vec{F} = q(\vec{E}+\vec{v}\times \vec{B}) \qquad $
+$\vec{j} = \rho \vec{v} \qquad $
+$\partial_{t}\rho +\vec{\nabla} \cdot \vec{j} = 0$\\
+$\vec{S} = \frac{1}{\mu_0}(\vec{E}\times \vec{B})$\\
+$u = \frac{1}{2}(\epsilon_0 \vec{E}^2+\frac{\vec{B}^2}{\mu_0})=\frac{1}{2}\varepsilon_0c^2\left( \frac{E^2}{c^2}+B^2\right)$\\
+$\partial_t u +\vec{\nabla}\cdot\vec{S} = -\vec{E}\cdot\vec{j}$\\
+
+Tensor de estrés de Maxwell:\\
+{\large$\mathbf{T} = \dfrac{\epsilon_0 \vec{E}^2+\frac{1}{\mu_0}\vec{B}^2}{2}\mathbf{\mathbb{I}}-(\epsilon_0 \vec{E}\circ \vec{E}+\frac{1}{\mu_0}\vec{B}\circ\vec{B})$}\\
+
+{\large$  \mathrm{T}_{ij}^{M}=\mathrm{\varepsilon}_{0}c^2\left[\frac{E_iE_j}{c^2}+B_iB_j-\frac{1}{2}\delta_{ij}\left( \frac{E^2}{c^2}+B^2 \right) \right]$}
+
+{\large$(T^{ij} = T^{ji}) \qquad Tr[\mathbf{T}] = u$}\\
+
+Conservación del momento lin. EM ($\vec{p} \equiv \vec{S}/c^2$):
+{\large$\vec{\nabla} \mathbf{T}-\partial_t \vec{p} = \vec{f} \qquad$
+$\partial_k T^{ik}-\frac{1}{c^2}\partial_t S^i = f^i$\\
+donde $\vec{f} = \rho\vec{E}+\vec{j}\times\vec{B}$}\\
+
+$
+    \vec{E} =-\vec{\nabla}\phi-\partial_t\vec{A} \qquad \qquad
+     \vec{B} = \vec{\nabla}\times\vec{A}
+$\\
+$
+    \phi'= \phi -\partial_t f \qquad
+    \vec{A}'= \vec{A}+\vec{\nabla}f
+$\\
+    \end{minipage}
+};
+
+%---------------------------------
+\node[fancytitle, right=10pt] at (box.north west) {Conceptos básicos de Electromagnetismo};
+\end{tikzpicture}
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    
+- Temp.: $\phi = 0 \qquad$
+- Coulomb: $\vec{\nabla}\cdot\vec{A} = 0$\\
+- Axial: $A^k = 0 \ (k=1,2,3)$\\
+- Lorenz: $\vec{\nabla}\cdot\vec{A}+\partial_t \phi /c^2=0 \ \longleftrightarrow \ \partial_{i}A^{i}=0$
+\\
+
+Ecs de ondas ($\rho = \vec{j} = 0$):\\
+$
+    \vec{\nabla}^2 E = \partial_t \vec{E}/c^2 \qquad
+    \vec{\nabla}^2 B = \partial_t \vec{B}/c^2$\\
+
+Sols. (parte real):\\
+    $\vec{E}(\vec{x}, t) = \vec{E}(\vec{k}, \omega)\,e^{i(\vec{k}\cdot\vec{x}-\omega t)} \\
+    \vec{B}(\vec{x}, t) = \vec{B}(\vec{k}, \omega)\,e^{i(\vec{k}\cdot\vec{x}-\omega t)}$\\
+
+(caso general $\rho \neq 0$ y $\vec{j} \neq 0$):\\
+$
+    \partial_t^2\phi/c^2 -\vec{\nabla}^2\phi = \frac{\rho}{\epsilon_0}+\partial_t (\vec{\nabla}\cdot\vec{A}+\partial_t \phi /c^2)\\
+    \partial_t^2\vec{A}/c^2 -\vec{\nabla}^2\vec{A} = \mu_0 \vec{j}-\vec{\nabla} (\vec{\nabla}\cdot\vec{A}+\partial_t \phi /c^2)$\\
+$\partial_t^2A^{\mu}/c^2 -\vec{\nabla}^2A^{\mu}=\mu_0 j^{\mu}$
+    \end{minipage}
+};  
+%---------------------------------
+\node[fancytitle, right=10pt] at (box.north west) {Conceptos básicos de Electromagnetismo};
+\end{tikzpicture}
+
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+
+
+
+- Punto reposo:$\phi(\vec{r})= \frac{q}{4\pi\epsilon_0 r}\text{,   y   } \vec{A} = 0$\\
+- Dipolo el: $\phi(\vec{r})= \frac{1}{4\pi\epsilon_0}\,\frac{\vec{P}\cdot\vec{r}}{r^3} = \frac{1}{4\pi\epsilon_0}\,\frac{P_i x^i}{(x_j x^j)^{3/2}}$\\
+- Cuadrupolo el:$\phi(\vec{r})= \frac{1}{4\pi\epsilon_0}\,\frac{\vec{r}\,\mathbf{Q}\,\vec{r}}{r^5} = \frac{1}{4\pi\epsilon_0}\,\frac{x_i Q^{ij} x_j}{(x_k x^k)^{5/2}}$\\
+- Dipolo mag: $\phi(\vec{r})=0 \text{,   y   } \vec{A}(\vec{r}) = \frac{\mu_0}{4\pi}\,\frac{\vec{m}\times\vec{r}}{r^3} \Longrightarrow$\\
+{\large$A^{\mu} = \frac{\mu_0}{4\pi}\,\dfrac{\varepsilon_{\mu\nu\sigma}m_{\nu}x_{\sigma}}{(x_{\alpha}x^{\alpha})^{3/2}}$}\\
+- Cuadrupolo mag: $\vec{A}(\vec{r}) = \frac{\mu_0}{4\pi}\,\frac{\vec{r}\times\mathbf{Q}\vec{r}}{r^5}\Longrightarrow$\\
+{\large$\Rightarrow A^{\mu} = \frac{\mu_0}{4\pi}\,\dfrac{\varepsilon_{\mu \nu \sigma}x^{\nu} Q_{\sigma}^{\lambda} x_{\lambda}}{(x_{\alpha} x^{\alpha})^{5/2}}$}\\
+
+Ctes. opticas: ($\Tilde{\gamma}$ cte. de prop., $\Tilde{n}$ el índ. de refracción, $\Tilde{\epsilon}$ la cte. dieléctrica y $\Tilde{\eta}$ la impedancia):\\
+{\large $\Tilde{\gamma}=i\frac{\omega}{X}\sqrt{\frac{\Tilde{\epsilon}}{\epsilon_0}} \qquad \Tilde{\eta}=\sqrt{\frac{\mu_0}{\Tilde{\epsilon}}}$}\\
+$\Tilde{\epsilon}=\epsilon_0\left(1-i\dfrac{\sigma}{\omega\epsilon_0}\right) \qquad \Tilde{n}=c\mu_0/\Tilde{\eta}$
+
+Coefs de reflexión y transmisión ($\Tilde{n}=n+i\alpha$):\\
+$R=\frac{(n_1-n_2)^2+(\alpha_1-\alpha_2)^2}{(n_1+n_2)^2+(\alpha_1+\alpha_2)^2} \qquad T=\frac{4n_1n_2+4\alpha_1\alpha_2}{(n_1+n_2)^2+(\alpha_1+\alpha_2)^2}$
+
+
+    \end{minipage}
+};  
+%---------------------------------
+\node[fancytitle, right=10pt] at (box.north west) {Conceptos básicos de Electromagnetismo};
+\end{tikzpicture}
+
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.31\textwidth}
+
+
+   
+Boost $\vec{\beta} =(\beta, 0, 0) = (v/c, 0, 0)$:\\
+$
+      ct' = \gamma(ct-\beta\,x)\ \
+      \vec{x'}=\vec{x}+\frac{\gamma-1}{\beta^{2}}(\vec{\beta}\cdot\vec{x})\vec{\beta}-\gamma x^{0}\vec{x}
+      %x'  = \gamma(x-\beta\, ct)\ \
+      %y'  = y\ \
+      %z'  = z$
+$
+$    \begin{pmatrix}
+           ct' \\
+           x'  \\
+           y' \\
+           z'
+         \end{pmatrix} = \begin{pmatrix}
+           \gamma & -\gamma\beta & 0 & 0 \\
+           -\gamma\beta & \gamma & 0 & 0  \\
+           0 & 0 & 1 & 0 \\
+           0 & 0 & 0 & 1
+         \end{pmatrix} \begin{pmatrix}
+           ct \\
+           x  \\
+           y \\
+           z
+         \end{pmatrix}
+$\\
+
+$ \vec{x}' = \mathbf{\Lambda}\vec{x} \;\;\;\;\Longrightarrow\;\;\;\; x'^i = \Lambda_{j}^{i} x^{j}$
+
+$
+    \mathbf{\Lambda} = \begin{pmatrix}
+         \begin{array}{c|c}
+             \gamma & -\gamma\vec{\beta}\\[0.5em] \hline\\[-0.5em]
+             -\gamma\vec{\beta} & \mathbf{\mathbb{I}}+\dfrac{\gamma-1}{\beta^2}\vec{\beta}\circ\vec{\beta}
+         \end{array}
+         \end{pmatrix}=$\\
+         
+      $   \begin{pmatrix}
+           \gamma & -\gamma\beta_x & -\gamma\beta_y & -\gamma\beta_z \\[1em]
+           -\gamma\beta_x & 1+\frac{\gamma-1}{\beta^2}\beta_{x}^{2} & \frac{\gamma-1}{\beta^2}\beta_x \beta_y & \frac{\gamma-1}{\beta^2}\beta_x \beta_z  \\[1em]
+           -\gamma\beta_y & \frac{\gamma-1}{\beta^2}\beta_x \beta_y & 1+\frac{\gamma-1}{\beta^2}\beta_{y}^{2} & \frac{\gamma-1}{\beta^2}\beta_y \beta_z \\[1em]
+           -\gamma\beta_z & \frac{\gamma-1}{\beta^2}\beta_x \beta_z & \frac{\gamma-1}{\beta^2}\beta_y \beta_z & 1+\frac{\gamma-1}{\beta^2}\beta_{z}^{2}
+         \end{pmatrix}
+$
+Vels: {\large $ \qquad u_{||}' = \frac{u_{||} - v}{1 - \frac{\vec{v}.\vec{u}}{c^2}} \; \; \; \text{, y} \; \;\; \;  \vec{u}_{\perp}' = \frac{\vec{u}_{\perp}}{ \gamma(1 - \frac{\vec{v}.\vec{u}}{c^2}) } $}\\
+
+$\vec{E'}=\gamma(\vec{E}+\vec{v}\times \vec{B})-\frac{\gamma^2}{\gamma+1}(\vec{v}\cdot\vec{E})\frac{\vec{v}}{c^2}$\\
+$\vec{B'}=\gamma(\vec{B}-\vec{v}\times \vec{E}/c^2)-\frac{\gamma^2}{\gamma-1}(\vec{v}\cdot\Vec{B})\frac{\vec{v}}{c^2}$\\
+$E'_\parallel=E_\parallel\phantom{Espacio}\vec{E}'_\perp=\gamma(\vec{E}_\perp+\vec{v}\times \vec{B}_\perp)$\\
+$B'_\parallel=B_\parallel\phantom{Espacio}\vec{B}'_\perp=\gamma(\vec{B}_\perp-\vec{v}\times \vec{E}_\perp/c^{2})$\\
+
+
+Rapidez: $
+         \ \ \ \cosh \xi=\gamma \ \ \
+         \sinh \xi=\gamma \beta\ \ \
+         \tanh \xi=\beta $\\
+    $\xi=acosh(\gamma)\simeq\ln(2\gamma)
+\ \ \ (\simeq \ ultrarrel.)$
+
+$x^{i} = \begin{pmatrix}
+    ct\\[0.3em]
+    \vec{x}
+\end{pmatrix} \qquad    v^{i} = \frac{dx^i}{d\tau} = \begin{pmatrix}
+    \gamma_v c\\[0.3em]
+    \gamma_v \vec{v}
+\end{pmatrix}  $\\
+($d\tau = dt/\gamma$ y $ds= c d\tau$)\\
+
+
+$a^{i} = \frac{dv^i}{d\tau} = \begin{pmatrix}
+    \gamma_v \dot{\gamma_v} c\\[0.3em]
+    \gamma_v^2\vec{a}+\gamma_v\dot{\gamma_v}\vec{v}
+\end{pmatrix} = \begin{pmatrix}
+    \gamma_v^4\,\frac{\vec{a}\cdot\vec{v}}{c}\\[0.3em]
+    \gamma_v^4\,(\vec{a}+\frac{\vec{a}\cdot\vec{v}}{c^2}\vec{v})
+\end{pmatrix}$\\
+
+$p^{i} = \begin{pmatrix}
+    E/c\\[0.3em]
+    \vec{p}
+\end{pmatrix}\ \  f^{i} =\frac{dp^i}{d\tau}= \begin{pmatrix}
+    \gamma_v\,\frac{\vec{f}\cdot\vec{v}}{c}\\[0.3em]
+    \gamma_v \vec{f}
+\end{pmatrix}\ \ J^{i} = \begin{pmatrix}
+    c\rho\\[0.3em]
+    \vec{J}
+\end{pmatrix}$\\
+
+
+$
+F_c=\gamma ma_c
+\qquad
+F_t=\gamma^3 ma_t
+\qquad
+p=\gamma mv
+$\\
+$
+E_T=\gamma mc^2
+\qquad
+    E^2 = c^2 |\Vec{p}|^2 + (mc^2)^2
+$
+    \end{minipage}
+};
+%------------ campo titulo---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Relatividad};
+\end{tikzpicture}
+%---------------------------------
+
+
+
+
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.33\textwidth}
+
+{\large $\omega'=\omega\gamma(1-\beta\cos\theta)\qquad I'(t)=\frac{1-\beta}{1+\beta}I$}\\
+{\Large$\tan\theta'=\frac{\sin\theta}{\gamma(\cos\theta-\beta)}$}\\
+
+a'=cte:\\
+{\large $v(t)=\frac{a't}{\sqrt{1+(\frac{a't}{c})^2}} \ \ x(t)=\frac{c^2}{a'}\left[\sqrt{1+(\frac{a't}{c})^2}-1\right]$}\\
+$\tau(t)=ln\left[\frac{a't}{c}+\sqrt{1+(\frac{a't}{c})^2}\right]$\\
+
+Adición de vels.:\;
+\Large$v=\frac{v_1+v_2}{1+\frac{v_1v_2}{c^2}}$
+
+
+    \end{minipage}
+};
+%------------ campo titulo---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Relatividad};
+\end{tikzpicture}
+%---------------------------
+
+
+
+
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.335\textwidth}
+
+Producto exterior ($\circ$):\\
+$
+    \vec{E}\circ\vec{E}=\begin{pmatrix}
+E_{x}^2 & E_{x}E_{y} & E_{x}E_{z} \\[0.6em]
+E_{y}E_{x} & E_{y}^2 & E_{y}E_{z} \\[0.6em]
+E_{z}E_{x} & E_{z}E_{y} & E_{z}^2
+\end{pmatrix}
+$\\
+$x^i = \begin{pmatrix}
+    ct\\[0.3em]
+    \vec{x}
+\end{pmatrix} \ \ \ x_i = g_{ij}x^j = \begin{pmatrix}
+    ct\\[0.3em]
+    -\vec{x}
+\end{pmatrix} \\ F_{\alpha\beta} = g_{\alpha\mu}g_{\nu\beta}F^{\mu\nu}$\\
+$\delta_{j}^{i}\delta_{i}^{k}=\delta_{j}^{k}\qquad \delta_{i}^{i}=\delta_{j}^{i}\delta_{j}^{i}=3$\\
+$\delta_{j}^{i} = g^{ik}g_{kj}= \mathbb{I}_{ij}\neq\delta_{ij}=g_{ik}\delta_{j}^{k}$\\
+$\delta_{ij} = g_{ij} = g^{ij} = \delta^{ij} \qquad \frac{\partial x^\alpha}{\partial x^\beta}=\delta^\alpha_\beta$\\
+$\varepsilon_{ijk} = \begin{cases}
+\begin{aligned}
+    1 &\Leftrightarrow (i,j,k) \;\;\text{permutación par de}\;\;(1,2,3)\\
+    -1 &\Leftrightarrow (i,j,k) \;\;\text{permutación impar de}\;\;(1,2,3)\\
+    0 &\Leftrightarrow\;\;\text{hay valores repetidos en los índices}
+\end{aligned}
+\end{cases}$\\
+$\varepsilon^{ijk}\varepsilon_{lmn} = \begin{vmatrix}
+\delta_{l}^{i} & \delta_{m}^{i} & \delta_{n}^{i}\\[0.5em]
+\delta_{l}^{j} & \delta_{m}^{j} & \delta_{n}^{j}\\[0.5em]
+\delta_{l}^{k} & \delta_{m}^{k} & \delta_{n}^{k}
+\end{vmatrix} \Rightarrow \varepsilon^{ijk}\varepsilon_{imn} =\delta_{m}^{j}\delta_{n}^{k}-\delta_{n}^{j}\delta_{m}^{k}$\\
+
+$\Rightarrow\varepsilon^{ijk}\varepsilon_{ijn} =2\delta_{n}^{k}\Rightarrow\varepsilon^{ijk}\varepsilon_{ijk} =6$\\
+
+$\vec{A}\cdot\vec{B} = A_i B_i \qquad (\vec{A}\times\vec{B})_{k} = \varepsilon_{ijk}A_i B_j$\\
+$\vec{\nabla}\cdot\vec{A} = \partial_i A_i \qquad (\vec{\nabla}\times\vec{A})_{k} = \varepsilon_{ijk}\partial_i A_j$\\
+
+Grupo de Poincaré: $\Lambda$ tq $\Lambda^T g \Lambda =g $ \\
+Grupo Lorentz restringido (forma general de una matriz): $\Lambda = e^{-i(\vec{\theta}\cdot\vec{J}+\vec{\eta}\cdot\vec{K})}$ \\
+Álgebra de Lie:\\
+$[J_i,J_j]=i\epsilon_{ijk} J_k$ \ \ \ $[K_i,K_j]=-i\epsilon_{ijk} J_k$ \\ $[J_i,K_j]=i\epsilon_{ijk} K_k$\\
+Matrices de rotación:\\ {\large $R_{\Vec{n}} (\theta)=e^{\phi \Vec{G}\cdot\Vec{n}}=\mathbf{1} +\phi \Vec{G}\cdot \Vec{n}$}
+
+ 
+    \end{minipage}
+};
+%------------ campo titulo---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Cálculo tensorial};
+\end{tikzpicture}
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+
+$\partial^{i} = \begin{pmatrix}
+    \frac{1}{c}\partial_t\\[0.3em]
+    -\vec{\nabla}
+\end{pmatrix}
+\qquad A^{i} = \begin{pmatrix}
+    \phi/c\\[0.3em]
+    \vec{A}
+\end{pmatrix}$\\
+$F^{ik} \equiv \partial^i A^k -\partial^k A^i =
+\begin{pmatrix}
+         \begin{array}{c|c}
+             0 & -\vec{E}/c\\[0.5em] \hline\\[-0.5em]
+             \vec{E}/c & \vec{B}_{\wedge}
+         \end{array}
+         \end{pmatrix}=\\
+         \begin{pmatrix}
+             0 & -E_x/c & -E_y/c & -E_z/c\\[0.4em]
+             E_x/c & 0 & -B_z & B_y\\[0.4em]
+             E_y/c & B_z & 0 & -B_x\\[0.4em]
+             E_z/c & -B_y & B_x & 0
+         \end{pmatrix}$\\
+$F^{ik^*} \equiv G^{ik} \equiv \frac{1}{2} \varepsilon^{iklm}F_{lm}= \begin{pmatrix}
+         \begin{array}{c|c}
+             0 & -\vec{B}\\[0.5em] \hline\\[-0.5em]
+             \vec{B} & -\vec{E}/c_{\wedge}
+         \end{array}
+         \end{pmatrix}= \\
+         \begin{pmatrix}
+             0 & -B_x & -B_y & -B_z\\[0.4em]
+             B_x & 0 & E_z/c & -E_y/c\\[0.4em]
+             B_y & -E_z/c & 0 & E_x/c\\[0.4em]
+             B_z & E_y/c & -E_x/c & 0
+         \end{pmatrix}$\\
+         
+{\large$F^{'\alpha \beta} = \Lambda^\alpha_\mu \Lambda_\nu^\beta F^{\mu\nu} \;;\;
+\vec{E}'= \gamma (\vec{E} + c\vec{\beta} \times \vec{B}) $}\\
+{\large$\vec{B}' = \gamma(\vec{B} - \dfrac{\vec{\beta} \times \vec{E}}{c}) - \dfrac{\gamma^2}{\gamma + 1} \vec{\beta}(\vec{\beta}\cdot\dot{\vec{\beta}})$}\\
+
+Invariantes bajo transformaciones de Lorentz:\\
+$F_{\mu\nu}F^{\mu\nu} = -2\left(\frac{\vec{E}^2}{c^2}-\vec{B}^2\right) \;;\; F_{\mu\nu}^{*}F^{\mu\nu} = -\frac{4}{c}\vec{E}\cdot\vec{B}$\\
+
+Identidad de Bianchi: $\partial_\mu F^{*\mu\nu}=0$\\
+Ecuación de Klein-Gordon: $\partial^{i}\partial_{i}\phi+\mu^{2}\phi=0\\ (\mu \equiv masa\ de\ Proca)$
+
+\end{minipage}
+};
+
+
+%------------ potencial titulo  ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Teoría de Campos};
+\end{tikzpicture}
+
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.31\textwidth}
+
+
+{\large$S=S_{libre}+S_{int}+S_{EM}=-mc^2 \int dt \sqrt{1-v^2/c^2}+\frac{1}{c}\int d^4xj^{\mu}A_{\mu}-\frac{1}{c\mu_0}\int d^4x F_{\mu \nu}F^{\mu \nu}$}\\
+Ecs. Maxwell: {\large $\partial_{\nu}F^{\mu\nu}=\mu_0j^{\mu}\, , \ \ \partial_{\nu}F^{\mu\nu^*}=0$}\\
+Tma. continuidad: {\large$\partial^\alpha A_\alpha =0$}\\
+$\partial_\mu\left(\frac{\partial\mathcal{L}}{\partial(\partial_\mu\phi_i)}\right)-\frac{\partial\mathcal{L}}{\partial\phi_i}=0$\\
+Dens. lag. libre: {\large$\mathcal{L}=-\frac{\epsilon_0 c^2}{4}F^{\mu\nu}F _{\mu\nu}$}\\
+Dens. lag. Maxwell: {\large$\mathcal{L}=-\frac{\epsilon_0 c^2}{4}F^{\mu\nu}F _{\mu\nu}-J_\mu A^\mu$}\\
+Dens. lag. de radiación:\\
+{\large$\mathcal{L}=-\dfrac{z_0 c^2}{4} \partial^\mu A^\nu \partial_\nu A_\mu-J^\mu A_\mu$}\\
+Dens. lag. de Proca: $\mathcal{L}=-\frac{\epsilon_0 c^2}{4}F^{\mu\nu}F _{\mu\nu}+\frac{1}{2}\mu^2 A^\alpha A_\alpha $\\
+Masa de Proca: $\mu=\frac{mc}{\hbar}$\\
+Corriente/Carga de Noether:\\
+{\large$J^\mu_k=-\left(\dfrac{\partial\mathcal{L}}{\partial(\partial_\mu \phi)}\partial_\nu \phi - \mathcal{L} \delta^\mu_\nu\right)\left(\dfrac{\delta x^\mu}{\delta \omega^k}\right)+$\\$+\dfrac{\partial\mathcal{L}}{\partial(\partial_\mu \phi)} \left(\dfrac{\delta \phi}{\delta \omega^k}\right)$\; , \ \ \
+$Q_k=\frac{1}{c}\int J^0_kdV$}\\
+Tensor energía-momento:\\{\large$T^{\mu \nu}=\dfrac{\partial\mathcal{L}}{\partial(\partial_\mu \phi)}\partial^\nu \phi - \mathcal{L} \eta^{\mu\nu}$}
+
+
+Para una trsf. Lor. (externa) de parámetros $\omega^{\rho\sigma}$ (0i boosts, ij rotaciones) y $\frac{\delta x^\mu}{\delta \omega^k} = \frac{1}{2}(\delta_{\rho}^{\mu}\delta_{\sigma}^{\nu}-\delta_{\sigma}^{\mu}\delta_{\rho}^{\nu})x_\nu $:\\
+{\Large$J^\mu_{\rho \sigma}=\frac{\partial\mathcal{L}}{\partial(\partial_\mu \phi)}\frac{1}{2} (\delta_{\rho}^{\nu}x_\sigma-\delta_{\sigma}^{\nu}x_{\rho})\partial_\nu \phi - -\mathcal{L}\frac{1}{2}(\delta_{\rho}^{\mu}x_\sigma-\delta_{\sigma}^{\mu}x_{\rho}) $}\\
+Tensor energía momento (GLR):\\{\large$T^{\mu \sigma \rho} = -[T^{\mu \rho}x^\sigma - T^{\mu \sigma}x^\rho]$}  con  {\large$\ \partial_\mu T^{\mu \sigma \rho}=0$}\\
+Carga conservada ($\mu=0$) {\large $M^{\rho \sigma}= \int d^3x T^{0\rho\sigma} $} \\
+Tma conservación:\\
+{\large$\partial_0 J^0_k$  $\rightarrow$ $Q_k(t)=\int_v dx^3 J^0_k$ $\rightarrow$ $\frac{d}{dt}Q_k=0$}\\
+(Conservación de la carga de noether)\\
+Tensor energía momento para EM:\\
+{\large$\Theta^{ik}  = \begin{pmatrix}
+         \begin{array}{c|c}
+             u & c\vec{g}\\[0.25em] \hline\\[-0.85em]
+             c\vec{\eta} & -T^{ij}
+         \end{array}
+         \end{pmatrix}$}
+         
+         Con $\Vec{g}=\epsilon_0(\Vec{E}\times\Vec{B})=\frac{\Vec{S}}{c^2}$ y $T^{ij}=\frac{\partial\mathcal{L}}{\partial(\partial_i \phi)}\left(\frac{\partial\phi}{\partial x_j}\right)-g^{ij}\mathcal{L}$ y $u=\frac{1}{2}(\vec{E}\cdot\vec{D} + \vec{B}\cdot\vec{H}) $\\
+         
+ $T_{ij}^M=\varepsilon c^2 \left[\frac{E_iE_j}{c^2}+B_iB_j-\frac{1}{2}\delta_{ij}\left(\frac{E^2}{c^2}+B^2\right)\right]$
+
+ Cons. energía en campo EM: $\frac{\partial u}{\partial t} + \vec{\nabla} \cdot \vec{S} + \vec{E}\cdot \vec{J} =0$\\
+ Tma conservación: $\partial_i T^i_j=0$
+
+ {\large$\Theta^{ik}=\epsilon_0 c^2 (F^{ij} F_j^k+ \frac{1}{4}F^2)$ \\    
+ $\partial_i\Theta^{ik}=-F^{jl} J_l$}; \ $F_i=\int T_{ij}dS_j$\\
+Presión de radiación: $\mathcal{P}_{rad}^{ab}=\frac{dF_i}{dS_i}$\\
+D'Alembertiano: {\large $\partial_{i}\partial^{i}=\frac{1}{c^{2}}\partial^{2}_t-\vec{\nabla}^2$}\\
+Dens. hamiltoniana: $\mathcal{H}= \sum_j \Pi_j (\partial_0 \phi_k) - \mathcal{L}$, y el hamiltoniano $H = \int d^3 x \mathcal{H} = \int d^3 x T^0_0$ donde $\Pi_j= \dfrac{\partial \mathcal{L}}{\partial (\partial_0 \phi_k)} $ la dens. momento canónico.
+\end{minipage}
+};
+%------------ potencial titulo  ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Teoría de Campos};
+\end{tikzpicture}
+%---------------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.31\textwidth}
+    Lenard Wiehart:\\
+{\large $\phi(t,\vec{r})=\frac{q}{4\pi\epsilon_0}\left.\frac{1}{s}\right|_{ret}$\;;\ \
+$\vec{A}(t,\vec{r})=\frac{q}{4\pi\epsilon_0}\left.\frac{\vec{v}}{c^2s}\right|_{ret}$} \\
+    con $s=R-\vec{R}\cdot\vec{\beta}$\\
+$
+    \vec{E}(t,\vec{r})=\frac{q}{4\pi\epsilon_0}\left[\frac{\vec{n}-\vec{\beta}}{\gamma^2R^2(1-\vec{n}\vec{\beta})^3}+\frac{\vec{n}\times[(\vec{n}-\vec{\beta})\times\dot{\vec{\beta}}]}{cR(1-\vec{n}\vec{\beta})^3}\right]
+    \\
+    \vec{B}(t,\vec{r})=\vec{n}\times\left.\frac{\vec{E}}{c}\right|_{ret}
+$\\
+Caso general:\\
+$
+    \frac{dP(t')}{d\Omega}=|\Vec{S}|^{\text{rad}} R^2 (1-\vec{n}\vec{\beta}) = \epsilon_0 c |\vec{E}|^2  R^2 (1-\vec{n}\vec{\beta})=\\
+    = \dfrac{q^2}{16\pi^2\epsilon_0c}\dfrac{(\vec{n}\times[(\vec{n}-\vec{\beta})\times\dot{\vec{\beta}}])^2}{(1-\vec{n}\vec{\beta})^5}
+ \;; \
+    \dfrac{dt}{dt'}=1-\vec{n}\vec{\beta}
+$\\
+$
+     \frac{dP(t')}{d\Omega}= (1-\vec{n}\vec{\beta})\frac{dP(t)}{d\Omega}
+     \ \
+     P(t')=\frac{1}{4\pi\epsilon_0}\frac{2q^2}{3c}\gamma^6
+[\dot{\vec{\beta}}^2-(\vec{\beta}\times\dot{\vec{\beta}})^2]
+$\\
+$
+P(t')=\frac{q^2\gamma^2}{6\pi\varepsilon_{0}c^3m^2}(F^2-(\overrightarrow{\beta}\cdot \overrightarrow{F})^2)
+$\\
+Radiación Larmor: (no relativista$\rightarrow$sí en sistema propio.)\\
+$
+\frac{dP}{d\Omega}=\frac{1}{4\pi\epsilon_0}\frac{q^2}{4\pi c^3}[\vec{n}\times(\vec{n}\times\dot{\vec{v}})]^2
+\qquad
+P=\dfrac{1}{4\pi\epsilon_0}\dfrac{2}{3}\dfrac{q^2\dot{\vec{v}}^2}{c^3}
+$\\
+lineal $\
+    \frac{dP}{d\Omega}=\frac{1}{4\pi\epsilon_0}\frac{q^2}{4\pi c^3}\frac{a^2\sen^2\theta}{(1-\beta\cos\theta)^5}
+    \ \ \
+    P=\frac{1}{4\pi\epsilon_0}\frac{2}{3}\frac{q^2}{c^3}\gamma^6a^2
+    \\
+    \frac{dP}{d\Omega}=\dfrac{1}{4\pi\epsilon_0}\dfrac{8}{\pi}\dfrac{q^2}{c^3}\gamma^8a^2\dfrac{(\gamma\theta)^2}{(1+(\gamma\theta)^2)^5}\ \text{(lim.ultrrel. $\theta$ peq.)}$
+
+  \end{minipage}
+};
+%------------ potencial titulo  ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Radiación};
+\end{tikzpicture}
+
+
+
+
+%---------------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.65\textwidth}
+    circular \\
+\large$
+    \frac{dP}{d\Omega}=\frac{q^2}{16\pi^2\varepsilon_0c^3}\frac{1}{(1-\beta\cos\theta)^3}\left(1-\frac{(1-\beta^2)\sin^2\theta}{(1-\beta\cos\theta)^2}\right)$  \qquad $
+    \frac{dP}{d\Omega}=\frac{1}{4\pi\epsilon_0}\frac{q^2}{4\pi c^3}\frac{a^2}{(1-\beta\cos\theta)^3}\left[1-\frac{\sin^2\theta\cos^2\phi}{\gamma^2(1-\beta\cos\theta)^2}\right]$\\
+$P=\frac{1}{4\pi\epsilon_0}\frac{2}{3}\frac{q^2}{c^3}\gamma^4a^2$\\
+circ. ultrar\\
+{\Large$\frac{dP}{d\Omega}=\frac{1}{4\pi\epsilon_0}\frac{2q^2}{\pi c^3}\frac{\gamma^6a^2}{(1+(\gamma\theta)^2)^3}\left[1-\frac{4(\gamma\theta)^2\cos^2\phi}{(1+(\gamma\theta)^2)^2}\right] \qquad
+    P=\frac{1}{4\pi\epsilon_0}\frac{2}{3}\frac{q^2c}{R^2}\gamma^4\beta^4 \quad \text{con} \quad a=\frac{u^2}{R}$}\\
+$ \longrightarrow
+    \delta \varepsilon [MeV]= 8.85 \cdot 10^{-2} \frac{\varepsilon^4 [GeV]}{R[m]} \left(\frac{q}{e}\right)^2 \left(\frac{m_e c^2}{mc^2}\right)^4$ \\
+    con radio {\large $R[m]=\dfrac{\varepsilon[GeV]}{0.3\cdot B[T]} \dfrac{m}{m_e}\dfrac{e}{q}$}  $\begin{cases}
+        \text{$m_e$, $e$= del electrón}\\
+        \text{$m$, $q$= de la partícula}
+    \end{cases}$\\
+Sincrotrón radia /vuelta: $
+     P[W]=10^6 \cdot \delta \varepsilon [MeV] \cdot I[A]$\\
+Cambio radio:$\
+    \dfrac{2}{3}\dfrac{q^2/(4 \pi \varepsilon_0)}{mc^2} \left(\dfrac{qcB}{mc^2}\right)^3 c \Delta t=\Delta(1/R)
+$\\
+$
+    \dot{\vec{\beta}} = \frac{1}{\gamma m c} \left[  \vec{F} - (\vec{F}.\vec{\beta})\vec{\beta}  \right] \qquad \frac{d\gamma}{dt'}= \gamma^3 (\vec{\beta}.\dot{\vec{\beta}})\\
+    \vec{F} =\frac{d\vec{p}}{dt'}= \gamma m c \left[  \dot{\vec{\beta}} - \gamma^2 (\vec{\beta}.\dot{\vec{\beta}})\vec{\beta}  \right]
+$\\
+Reacción de radiación (despreciable si $T\ll \tau$, ó $E^{\text{rad}} \ll E^c_0$):
+
+    $\vec{F}_{\text{rad}}= m\tau \ddot{\vec{v}}  \qquad \qquad \tau = \dfrac{q^2}{6 \pi \epsilon_0 m c^3}\\$
+Tma conservación energía:$\
+    \frac{dE^{\text{cin}}}{dt'}+\frac{dE^{\text{rad}}}{dt'} =0  \\
+    E^{\text{rad}} = \int_0^T P(t') dt \qquad
+    \frac{d\vec{p}}{dt'} = \frac{1}{c^2} \frac{d}{dt'} (\Vec{E} \cdot \Vec{v}) \\
+    \Delta \Vec{p} = \Vec{F}\cdot \Delta t = \text{Impulso} \qquad
+\omega_c=\frac{qB}{\gamma m}$\\
+BETATRÓN:\\
+1)Condición del betatrón para radio $R=k$ constante:
+$
+    B_R=\dfrac{\int_S\vec{B}\cdot\vec{n} dA}{2\pi R^2}
+$\\
+2) Flujo magnético:$ \   \phi_m=\int_S\vec{B}\cdot\vec{n} dA$\\
+3) Fuerza electromotriz:$\
+    \epsilon=-\dfrac{d\phi_m}{dt}
+$\\
+4) Trabajo de la fem:$ \
+    W=q|\epsilon|
+$
+5) Intensidad: $
+   I=\rho v S=\frac{Nq}{T}$\\
+Radiación multipolar:\\
+Dipolo eléctrico: {\large$\sum_{i}q_{i}\vec{r'}_{i}$}\\
+Dipolo magnético: {\large$\frac{1}{2}\sum_{i}q_{i}(\vec{r'}_{i}\times\vec{v'}_{i}$})\\
+Cuadrupolo eléctrico: {\large$Q_{ij}=\sum_{r}q_{r}(3x'_{ij}-r'^{2}\delta_{ij})$}\\
+Dipolo eléctrico/dipolo magnetico:\\
+{\large $\begin{array}{ll}
+\bar{A}(\bar{r})=\frac{\mu_{0}}{4 \pi} \dfrac{e^{i k r}}{r} \dot{\bar{p}} & \bar{A}(\bar{r})=\frac{-\mu_{0}}{4 \pi c} \dfrac{e^{i k r}}{r}[\bar{n} \times \dot{\vec{m}}) \\
+\bar{H}=-\frac{1}{4 \pi c} \dfrac{e^{i k r}}{r}(\bar{n} \times \ddot{\bar{p}} ) & \bar{H}=-\frac{1}{4 \pi c^{2}} \dfrac{e^{i k r}}{r}[(\bar{n} \times \ddot{\bar{m} }) \times \bar{n}] \\
+\bar{E}=\frac{\mu_{0}}{4 \pi} \dfrac{e^{i k r}}{r}[\bar{n} \times(\bar{n} \times \ddot{\bar{p}})] & \bar{E}=\frac{\mu_{0}}{4 \pi c} \dfrac{e^{i k r}}{r}[\bar{n} \times \ddot{\bar{m}}] \\
+\bar{P}(t)=p_{0} e^{-i \omega t} & \bar{m}=m \cdot e^{-i \omega t}
+\end{array}$}\\
+Dipolo el. osc. {\large$d \ll\frac{\lambda}{\text { so }}\qquad r \gg \frac{c}{\omega} \qquad P_{0}=q\cdot d$}\qquad{\large $\bar{P}(t)=q_{0} d \cos (w t) \hat{u}$ \\ $t \rightarrow t-\frac{r}{c}$ \qquad
+$P(t)=\int_{\Omega}\frac{dP}{d\Omega}d\Omega=\int_{\Omega}SR^2d\Omega=\int_{\Omega}\varepsilon_0 c E^2 R^2d\Omega=
+\dfrac{\mu_{0} P_{0}^{2} \omega^{4}}{12 \pi c}$}\\
+Campos de radiación de un cuadrupolo oscilante de componentes:
+$$Q_{ij} e^{ {-iwt }}=q_r (3x_ix_j-r^2\delta_i^j)e^{ {-iwt }} \left\rbrace\begin{array}{l}
+B_{rad}=\dfrac{\mu_0 k^2 e^{i(kr-wt) }}{4 \pi} \dfrac{1}{r} u_r \times q \\
+E_{rad}=c\left(B_{\text {rad}} \times u_r\right)
+\end{array}\right. \quad \begin{array}{l}
+q=-\dfrac{i\omega}{2} n_j Q_{ij} \\
+\frac{d P}{d \Omega}=\frac{\mu_0 c}{32 \pi^2} k^4\left|u_r \times q\right|^2
+\end{array}$$
+Resistencia a la radiación
+\large
+$R=80 \pi^{2}\left(\frac{d}{\lambda}\right)^{2} \Omega ;\qquad I^{2} R=\text {potencia } \\
+\text {Directiv.} \
+D=\left(\dfrac{d P}{d \pi}\right)_{\max }/\left(\dfrac{P}{4 \pi}\right)$ \;\;\; $D=3/2$\\
+Dipolo mag. osc. $I(t)=I_{0} cos(\omega t) \\
+\bar{m}(t)=I_0\pi a^2cos(\omega t)\qquad
+m_0=I_0\pi a^2
+P=\dfrac{\mu_0m_0^2\omega^4}{12\pi c^3}\\
+R_{rad}=320\pi^6(a/\lambda)^4\Omega\qquad D=3/2$
+
+    
+    \end{minipage}
+};
+%------------ potencial titulo  ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Radiación};
+\end{tikzpicture}
+
+%---------------------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.65\textwidth}
+\large Th. de Gauss: $\int_{V}\partial_{i}K^{i}d^{4}x=\int_{S}n_{i}K^{i}dS$\\
+Din. cargas a partir de ec. $\frac{dp^{i}}{d\tau}=qF^{ij}u_{j}$:\\
+$\frac{dW}{dt}=q\Vec{E}\cdot\Vec{v} \qquad
+\vec{\omega_c} = \frac{e\vec{B}}{\gamma m} \;\; \text{(frec. sincrotón)} \;\;
+\frac{d\Vec{p}}{dt}=q(\Vec{E}+\Vec{v}\times \Vec{B})$
+
+$E=\frac{\sigma0}{\varepsilon}$  condensador $B=\frac{\mu_0 I r}{2\pi R} \quad \text{hilo r$<$R}\\
+B=\frac{\mu_0 I}{2\pi r} \quad \quad  E=\frac{\lambda }{2 \pi \varepsilon_0 R} \quad \text{hilo r$>$R}\\
+ B=\mu_0 In$ ({\small solenoide});
+ $B=\dfrac{\mu_0 I}{2 R}$ ({\small centro de espira circular}); $B=\dfrac{\mu_0 I R^2}{2(z^2+R^2)^{3/2}}$ ({\small eje de espira})
+    \end{minipage}
+};
+%------------ potencial titulo  ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Otros};
+\end{tikzpicture}
+
+
+
+\end{multicols*}
+\end{document}
